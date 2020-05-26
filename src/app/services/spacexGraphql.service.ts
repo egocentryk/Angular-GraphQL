@@ -1322,12 +1322,12 @@ export type Volume = {
   cubic_meters?: Maybe<Scalars['Int']>;
 };
 
-export type PastLanchesListQueryVariables = {
+export type PastLaunchesListQueryVariables = {
   limit: Scalars['Int'];
 };
 
 
-export type PastLanchesListQuery = (
+export type PastLaunchesListQuery = (
   { __typename?: 'Query' }
   & { launchesPast?: Maybe<Array<Maybe<(
     { __typename?: 'Launch' }
@@ -1359,8 +1359,8 @@ export type LaunchDetailsQuery = (
   )> }
 );
 
-export const PastLanchesListDocument = gql`
-    query pastLanchesList($limit: Int!) {
+export const PastLaunchesListDocument = gql`
+    query pastLaunchesList($limit: Int!) {
   launchesPast(limit: $limit) {
     id
     mission_name
@@ -1379,9 +1379,9 @@ export const PastLanchesListDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class PastLanchesListGQL extends Apollo.Query<PastLanchesListQuery, PastLanchesListQueryVariables> {
-    document = PastLanchesListDocument;
-    
+  export class PastLaunchesListGQL extends Apollo.Query<PastLaunchesListQuery, PastLaunchesListQueryVariables> {
+    document = PastLaunchesListDocument;
+
   }
 export const LaunchDetailsDocument = gql`
     query launchDetails($id: ID!) {
@@ -1402,5 +1402,5 @@ export const LaunchDetailsDocument = gql`
   })
   export class LaunchDetailsGQL extends Apollo.Query<LaunchDetailsQuery, LaunchDetailsQueryVariables> {
     document = LaunchDetailsDocument;
-    
+
   }
