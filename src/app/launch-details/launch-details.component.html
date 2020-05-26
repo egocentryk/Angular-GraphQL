@@ -1,1 +1,27 @@
-<p>launch-details works!</p>
+<ng-container *ngIf="launchDetails$ | async as launchDetails">
+  <section style="padding-top: 20px;">
+    <mat-card style="width: 400px; margin: 0 auto !important; text-align: center;">
+      <mat-card-header>
+        <mat-card-title>{{ launchDetails.mission_name }}</mat-card-title>
+      </mat-card-header>
+      <img style="max-width: 256px; max-height: 256px; margin: 10px;"
+        mat-card-image
+        [src]="launchDetails.links.mission_patch"
+        alt="Mission patch of {{ launchDetails.mission_name }}"
+      />
+      <mat-card-content>
+        <p>{{ launchDetails.details }}</p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  <section class="photo-grid">
+    <img
+      *ngFor="let pic of launchDetails.links.flickr_images"
+      [src]="pic"
+      alt="Picture of {{ launchDetails.mission_name }}"
+      height="300"
+      width="300"
+      loading="lazy"
+    />
+  </section>
+</ng-container>
